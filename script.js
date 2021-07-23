@@ -292,7 +292,7 @@ function searchtitle(){
         if(notefield.length>0){
             document.getElementById("searchnotes").innerHTML=notefield;
         }else{
-            document.getElementById("searchnotes").innerHTML=`<h1 style="text-align: center;font-weight: 600;color: red;">No notes  contains this name</h1>`;
+            document.getElementById("searchnotes").innerHTML=`<h1 style="text-align: center;font-weight: 600;color: red;width:90vw">No notes  contains this name</h1>`;
         }
         
         }
