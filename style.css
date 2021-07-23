@@ -1,0 +1,221 @@
+:root {
+    --theme:#ffffff; 
+    --theme2:#edebeec6;
+    --themefont:#2e2d2fc6;
+    
+   
+}
+body {
+    margin: 0;
+    background-color: var(--theme);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    /* overflow: hidden; */
+    background-color: var(--theme);
+    height: 60px;
+    border-bottom: 2px solid var(--theme2);
+  }
+  
+  .topnav .head {
+    float: left;
+    background-color: var(--theme);
+    display: block;
+    color: var(--themefont);
+    text-align: center;
+    padding: 10px 36px;
+    text-decoration: none;
+    font-size:25px;
+  }
+  
+  .topnav .head:hover {
+    background-color: var(--theme);
+    color: var(--themefont);
+  }
+  
+  
+  .topnav input[type=text] {
+    float: center;
+    width: 40vw;
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 14vw;
+    border: none;
+    font-size: 17px;
+    border-radius: 10px;
+    background-color: var(--theme2);;
+  }
+  
+  .topnav input:focus {
+    background-color: rgba(255, 255, 255, 0.714);
+    outline: none;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+    border: 0px solid var(--theme);
+  }
+  .daynight{
+    position:absolute;
+    top: 0px;
+    right: 5px;
+    float: right;
+    font-size: 25px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px ;
+  }
+.noteinput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px 40px 0px;
+}
+.takeinput{
+  width: 40vw;
+  padding: 20px;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  border-radius: 10px;
+  background-color: var(--theme);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+#notetake{
+  -webkit-filter: drop-shadow(  4 2px 8px rgba(0, 0, 0, 0.721));
+  filter: drop-shadow( 4px 8px 10px rgba(0, 0, 0, 0.2));
+}
+
+#titleinput{
+  width: 40vw;
+  padding: 20px;
+  outline: none;
+  border: none;
+  color: var(--themefont);
+  font-size: 17px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: var(--theme2);
+  box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+}
+
+#bodyinput{
+  width: 40vw;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  border-radius: 0px;
+  background-color: var(--theme2);
+  color: var(--themefont);
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+}
+
+#inputoptions{
+  width: 40vw;
+  height: 40px;
+  margin-top: -6px;
+  z-index: 4;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: var(--theme2);
+   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19); 
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+}
+.normbutton{
+  background-color: var(theme);
+  margin: 2px;
+  padding: 4px;
+  color:  var(--themefont);
+  border-radius: 10px;
+  cursor: pointer;
+} 
+
+.COLORBOX{
+ height: 25px;
+ width: 25px;
+ justify-self: center;
+ margin-right: 10px;
+ border-radius: 12px;
+ background-color: aquamarine;
+
+}
+#mainnotes{
+  display: grid;
+  grid-gap: 2vw;
+  margin: 6vw;
+	grid-template-columns: repeat(auto-fit, 300px);
+
+}
+.noteitems{
+  width: 300px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 20px;
+  color: var(--themefont);
+}
+
+.boxtitle{
+  height: auto;
+  width: 300px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 40px;
+  overflow-x: hidden;
+}
+.boxbody{
+  text-align: center;
+  padding-bottom:20px;
+  
+}
+
+
+
+
+
+
+
+
+   @media screen and (max-width: 600px) {
+    .topnav .head {
+      padding-top: 15px;
+      padding-left: 0px;
+      font-size: 20px;
+    }
+    
+  .topnav input[type=text] {
+    float: center;
+    margin-left: 0vw;
+    border: none;
+    
+  }
+  
+    .daynight{
+      position:fixed;
+      top: 0px;
+      right: 0px;
+      float: right;
+      font-size: 25px;
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0);
+    }
+        
+    .takeinput{
+      width: 70vw;
+    }
+    #titleinput{
+      width: 70vw;
+    }
+    
+    #bodyinput{
+      width: 70vw;
+    }
+    
+    #inputoptions{
+      width: 70vw;
+    }
+
+  } 
