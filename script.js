@@ -4,6 +4,79 @@ var neg=false;
 
 let db = new Localbase('db')
 
+db.collection('notes').get().then(keeps => {
+    if(keeps.length==0){
+    db.collection('notes').add({id:1,title:neg}, 'pagemode')
+    }else{
+        var isthere=false;
+        for (let x in keeps) {
+            if(keeps[x].id==1){isthere=true; console.log("there");}
+        }
+        if(!isthere){
+            db.collection('notes').add({id:1,title:neg}, 'pagemode')
+        }
+        else{
+            setcolor()
+        }
+        
+    }
+})
+reloadnotes();
+
+function reloadnotes(){
+    console.log("problem")
+    db.collection('notes').get().then(keeps => {
+        var notefield=``;
+        if(keeps.length>1){
+        for (let x in keeps) {
+            if(keeps[x].id!=1){
+            console.log(keeps[x].title);
+            console.log(x);
+            var bgcolour=keeps[x].col;
+            if(bgcolour==''){
+                bgcolour=`var(--theme)`
+                var makeborder="border: 2px solid var(--theme2);"
+            }else{
+                var makeborder="";
+            }
+            var newnote=`<div  class="noteitems" onclick='openmodal(["`+
+            String( keeps[x].id)+`","`+String( keeps[x].title)+`","`+String( keeps[x].note)+`","`+String( keeps[x].col)
+            +`"])' id="note`+
+            keeps[x].id
+            +`" style="background-color:`
+                + keeps[x].col+`;`+makeborder+
+                `;"> <section class="boxtitle">`
+                +keeps[x].title+
+                `</section> <hr><section  class="boxbody">`
+                + keeps[x].note+
+                `</section></div>`
+            notefield=newnote+notefield
+        }
+            //console.log(notefield)
+        }
+        document.getElementById("mainnotes").innerHTML=notefield;
+    }
+    })
+}
+
+
+
+function setcolor(){
+    db.collection('notes').doc('pagemode').get().then(doc => {
+        neg=doc.title;
+        if(neg){
+            thm.style.setProperty('--theme', "#191919f1" );
+            thm.style.setProperty('--theme2',"#565454");
+            thm.style.setProperty('--themefont',"#f3f3f3c6");
+        }
+        else{
+            thm.style.setProperty('--theme', "#ffffff" );
+            thm.style.setProperty('--theme2',"#edebeec6");
+            thm.style.setProperty('--themefont',"#2e2d2fc6");
+        }
+    })
+}
+
 
 
 
@@ -12,14 +85,24 @@ let db = new Localbase('db')
 function tooglemode(){
     if(neg){
         neg=false;
+        //light
         thm.style.setProperty('--theme', "#ffffff" );
         thm.style.setProperty('--theme2',"#edebeec6");
         thm.style.setProperty('--themefont',"#2e2d2fc6");
+        db.collection('notes').doc('pagemode').update({
+            title:neg
+        })
+
     }else{
+        //dark
         neg=true;
         thm.style.setProperty('--theme', "#191919f1" );
         thm.style.setProperty('--theme2',"#565454");
         thm.style.setProperty('--themefont',"#f3f3f3c6");
+        db.collection('notes').doc('pagemode').update({
+            title:neg
+        })
+
     }
 }
 
@@ -78,6 +161,9 @@ function takeinput(){
     
     closeinput();
     location.reload();
+    // document.getElementById("mainnotes").innerHTML="";
+    // reloadnotes();
+    
     
 }
 function loadtext(){
@@ -94,44 +180,8 @@ function loadtext(){
 
 
 
-function reloadnotes(){
-    console.log("problem")
-    db.collection('notes').get().then(keeps => {
-        var notefield=``;
-        if(keeps.length>0){
-        for (let x in keeps) {
-            console.log(keeps[x].title);
-            console.log(x);
-            var bgcolour=keeps[x].col;
-            if(bgcolour==''){
-                bgcolour=`var(--theme)`
-                var makeborder="border: 2px solid var(--theme2);"
-            }else{
-                var makeborder="";
-            }
-            var newnote=`<div  class="noteitems" onclick='openmodal(["`+
-            String( keeps[x].id)+`","`+String( keeps[x].title)+`","`+String( keeps[x].note)+`","`+String( keeps[x].col)
-            +`"])' id="note`+
-            keeps[x].id
-            +`" style="background-color:`
-                + keeps[x].col+`;`+makeborder+
-                `;"> <section class="boxtitle">`
-                +keeps[x].title+
-                `</section> <hr><section  class="boxbody">`
-                + keeps[x].note+
-                `</section></div>`
-            notefield=newnote+notefield
-            //console.log(notefield)
-        }
-        document.getElementById("mainnotes").innerHTML=notefield;
-    }
-    })
-}
 
 
-
-
-reloadnotes();
 
 
 

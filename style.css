@@ -81,13 +81,14 @@ body {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 #notetake{
-  -webkit-filter: drop-shadow(  4 2px 8px rgba(0, 0, 0, 0.721));
-  filter: drop-shadow( 4px 8px 10px rgba(0, 0, 0, 0.2));
+  /* -webkit-filter: drop-shadow(  2px -2px 8px 6px rgba(0, 0, 0, 0.721)); */
+  -webkit-filter: drop-shadow(  10px 12px 8px 6px rgba(81, 81, 81, 0.721));
+  filter: drop-shadow( 4px 8px 15px rgba(0, 0, 0, 0.422));
 }
 
 #notetake2{
-  -webkit-filter: drop-shadow(  4 2px 8px rgba(0, 0, 0, 0.721));
-  filter: drop-shadow( 4px 8px 10px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(  10px 12px 8px 6px rgba(81, 81, 81, 0.721));
+  filter: drop-shadow( 4px 8px 15px rgba(0, 0, 0, 0.422));
 }
 #titleinput{
   width: 40vw;
@@ -99,7 +100,7 @@ body {
   font-weight: 600;
   border-radius: 10px 10px 0px 0px;
   background-color: var(--theme2);
-  box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+  /* box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19); */
 }
 #titleinput2{
   width: max(40vw,300px);
@@ -111,7 +112,7 @@ body {
   font-weight: 600;
   border-radius: 10px 10px 0px 0px;
   background-color: var(--theme2);
-  box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+  /* box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19); */
 }
 #bodyinput{
   width: 40vw;
@@ -121,7 +122,7 @@ body {
   border-radius: 0px;
   background-color: var(--theme2);
   color: var(--themefont);
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19); */
 }
 #bodyinput2{
   width:  max(40vw,300px);
@@ -131,7 +132,7 @@ body {
   border-radius: 0px;
   background-color: var(--theme2);
   color: var(--themefont);
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19); */
 }
 
 #inputoptions{
@@ -144,7 +145,7 @@ body {
   font-size: 17px;
   border-radius: 0px 0px 10px 10px;
   background-color: var(--theme2);
-   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19); 
+   /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);  */
    display: flex;
    align-items: center;
    justify-content: flex-end;
@@ -159,7 +160,7 @@ body {
   font-size: 17px;
   border-radius: 0px 0px 10px 10px;
   background-color: var(--theme2);
-   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19); 
+   /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);  */
    display: flex;
    align-items: center;
    justify-content: flex-end;
@@ -196,6 +197,9 @@ body {
   background-color: rgba(255, 255, 255, 0);
   border-radius: 20px;
   color: var(--themefont);
+  -webkit-filter: drop-shadow(  10px 12px 8px 6px rgba(81, 81, 81, 0.721));
+  filter: drop-shadow( 4px 8px 15px rgba(0, 0, 0, 0.422));
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .boxtitle{
