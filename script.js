@@ -16,7 +16,7 @@ db.collection('notes').get().then(keeps => {
             db.collection('notes').add({id:1,title:neg}, 'pagemode')
         }
         else{
-            setcolor()
+            setcolor();
         }
         
     }
@@ -242,18 +242,69 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
+var backbutton=`
+<div style="display: flex;justify-content: center;width:100vw;">
+<a  class="normbutton"  style="background-color: rgba(189, 129, 0, 0.85);font-size: 29px;text-decoration: none;" onclick="backto()" href="">Back</a>
+</div>
+`
 
 function searchtitle(){
     var searchvalue=document.getElementById("titlesearch").value;
     console.log(searchvalue)
-    db.collection('notes').doc({ title: searchvalue }).get().then(document => {
-        console.log(document)
-      })
+    document.getElementById("searchnotes").style.display="grid";
+    document.getElementById("backb").style.display="flex";
+    document.getElementById("mainnotes").style.display="none";
+
+    console.log("problem2")
+    db.collection('notes').get().then(keeps => {
+        var notefield=``;
+        if(keeps.length>1){
+            for (let x in keeps) {
+                if(keeps[x].id!=1){
+                    maintitle=keeps[x].title;
+                    mainbnote=keeps[x].note
+                    if((maintitle.includes(searchvalue))||(mainbnote.includes(searchvalue))){
+                        console.log(keeps[x].title);
+                        console.log(x);
+                        var bgcolour=keeps[x].col;
+                        if(bgcolour==''){
+                            bgcolour=`var(--theme)`
+                            var makeborder="border: 2px solid var(--theme2);"
+                        }else{
+                            var makeborder="";
+                        }
+                        var newnote=`<div  class="noteitems" onclick='openmodal(["`+
+                        String( keeps[x].id)+`","`+String( keeps[x].title)+`","`+String( keeps[x].note)+`","`+String( keeps[x].col)
+                        +`"])' id="note`+
+                        keeps[x].id
+                        +`" style="background-color:`
+                            + keeps[x].col+`;`+makeborder+
+                            `;"> <section class="boxtitle">`
+                            +keeps[x].title+
+                            `</section> <hr><section  class="boxbody">`
+                            + keeps[x].note+
+                            `</section></div>`
+                        notefield=newnote+notefield
+                    }
+                }
+                //console.log(notefield)
+            }
+        if(notefield.length>0){
+            document.getElementById("searchnotes").innerHTML=notefield;
+        }else{
+            document.getElementById("searchnotes").innerHTML=`<h1 style="text-align: center;font-weight: 600;color: red;">No notes  contains this name</h1>`;
+        }
+        
+        }
+    })
 }
 
 
 
+
 var span = document.getElementsByClassName("close")[0];
+
+
 
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -261,6 +312,11 @@ window.onclick = function(event) {
   }
 }
 
+function backto(){
+    document.getElementById("searchnotes").style.display="none";
+    document.getElementById("mainnotes").style.display="grid";
+    document.getElementById("backb").style.display="none";
 
+}
 
 
