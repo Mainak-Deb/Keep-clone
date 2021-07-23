@@ -254,15 +254,15 @@ function searchtitle(){
     document.getElementById("searchnotes").style.display="grid";
     document.getElementById("backb").style.display="flex";
     document.getElementById("mainnotes").style.display="none";
-
+    searchvalue=searchvalue.toLowerCase();
     console.log("problem2")
     db.collection('notes').get().then(keeps => {
         var notefield=``;
         if(keeps.length>1){
             for (let x in keeps) {
                 if(keeps[x].id!=1){
-                    maintitle=keeps[x].title;
-                    mainbnote=keeps[x].note
+                    maintitle=keeps[x].title.toLowerCase();
+                    mainbnote=keeps[x].note.toLowerCase();
                     if((maintitle.includes(searchvalue))||(mainbnote.includes(searchvalue))){
                         console.log(keeps[x].title);
                         console.log(x);
