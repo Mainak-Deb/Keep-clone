@@ -1,9 +1,8 @@
 :root {
     --theme:#ffffff; 
-    --theme2:#edebeec6;
+    --theme2:#efecf0;
     --themefont:#2e2d2fc6;
     
-   
 }
 body {
     margin: 0;
@@ -86,20 +85,46 @@ body {
   filter: drop-shadow( 4px 8px 10px rgba(0, 0, 0, 0.2));
 }
 
+#notetake2{
+  -webkit-filter: drop-shadow(  4 2px 8px rgba(0, 0, 0, 0.721));
+  filter: drop-shadow( 4px 8px 10px rgba(0, 0, 0, 0.2));
+}
 #titleinput{
   width: 40vw;
   padding: 20px;
   outline: none;
   border: none;
   color: var(--themefont);
-  font-size: 17px;
+  font-size: 22px;
+  font-weight: 600;
   border-radius: 10px 10px 0px 0px;
   background-color: var(--theme2);
   box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
 }
-
+#titleinput2{
+  width: max(40vw,300px);
+  padding: 20px;
+  outline: none;
+  border: none;
+  color: var(--themefont);
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 10px 10px 0px 0px;
+  background-color: var(--theme2);
+  box-shadow:  0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+}
 #bodyinput{
   width: 40vw;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  border-radius: 0px;
+  background-color: var(--theme2);
+  color: var(--themefont);
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.2), 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+}
+#bodyinput2{
+  width:  max(40vw,300px);
   outline: none;
   border: none;
   font-size: 17px;
@@ -111,6 +136,21 @@ body {
 
 #inputoptions{
   width: 40vw;
+  height: 40px;
+  margin-top: -6px;
+  z-index: 4;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: var(--theme2);
+   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19); 
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+}
+#inputoptions2{
+  width:  max(40vw,300px);
   height: 40px;
   margin-top: -6px;
   z-index: 4;
@@ -152,6 +192,7 @@ body {
 .noteitems{
   width: 300px;
   height: auto;
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0);
   border-radius: 20px;
   color: var(--themefont);
@@ -170,6 +211,44 @@ body {
   text-align: center;
   padding-bottom:20px;
   
+}
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100vw; 
+  height: 100vh; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgb(0,0,0,0.4); 
+  backdrop-filter: blur(25px);
+}
+
+.modal-content {
+  background-color: #fefefe00;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 

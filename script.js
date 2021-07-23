@@ -18,7 +18,7 @@ function tooglemode(){
     }else{
         neg=true;
         thm.style.setProperty('--theme', "#191919f1" );
-        thm.style.setProperty('--theme2',"#565454c7");
+        thm.style.setProperty('--theme2',"#565454");
         thm.style.setProperty('--themefont',"#f3f3f3c6");
     }
 }
@@ -44,9 +44,13 @@ function colorinput(x){
     document.getElementById("titleinput").style.backgroundColor = x;
     document.getElementById("bodyinput").style.backgroundColor =x;
     document.getElementById("inputoptions").style.backgroundColor =x;
-    
 }
 
+function colorinput2(x){
+    document.getElementById("titleinput2").style.backgroundColor = x;
+    document.getElementById("bodyinput2").style.backgroundColor =x;
+    document.getElementById("inputoptions2").style.backgroundColor =x;
+}
 
 
 function takeinput(){
@@ -56,6 +60,7 @@ function takeinput(){
     var makeborder;
     
     var maindata={
+       id:Date.now(),
        title: title,
        note: note,
        col:bgcolour
@@ -85,6 +90,10 @@ function loadtext(){
         console.log(x)
     }
 }
+
+
+
+
 function reloadnotes(){
     console.log("problem")
     db.collection('notes').get().then(keeps => {
@@ -100,7 +109,11 @@ function reloadnotes(){
             }else{
                 var makeborder="";
             }
-            var newnote=`<div  class="noteitems" style="background-color:`
+            var newnote=`<div  class="noteitems" onclick='openmodal(["`+
+            String( keeps[x].id)+`","`+String( keeps[x].title)+`","`+String( keeps[x].note)+`","`+String( keeps[x].col)
+            +`"])' id="note`+
+            keeps[x].id
+            +`" style="background-color:`
                 + keeps[x].col+`;`+makeborder+
                 `;"> <section class="boxtitle">`
                 +keeps[x].title+
@@ -115,5 +128,89 @@ function reloadnotes(){
     })
 }
 
+
+
+
 reloadnotes();
+
+
+
+
+
+
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+
+
+function openmodal(x){
+    document.getElementById("idinput").innerHTML =x[0];
+    document.getElementById("titleinput2").value=x[1];
+    document.getElementById("bodyinput2").value=x[2];
+    document.getElementById("titleinput2").style.backgroundColor = x[3];
+    document.getElementById("bodyinput2").style.backgroundColor =x[3];
+    document.getElementById("inputoptions2").style.backgroundColor =x[3];
+    
+    modal.style.display = "block";
+
+}
+
+
+function editmodal(){
+    id=parseInt(document.getElementById("idinput").innerHTML);
+    newtitle=document.getElementById("titleinput2").value;
+    newbody=document.getElementById("bodyinput2").value;
+    newcol=document.getElementById("bodyinput2").style.backgroundColor;
+    console.log(id,newtitle,newbody,newcol)
+    db.collection('notes').doc({ id: id }).update({
+        title: newtitle,
+        note: newbody,
+        col:newcol
+    })
+    closemodal();
+    location.reload();
+}
+
+
+
+function closemodal(){
+    modal.style.display = "none";
+}
+
+
+function deletenote(){
+    id=parseInt(document.getElementById("idinput").innerHTML);
+    db.collection('notes').doc({ id: id }).delete();
+    closemodal();
+    location.reload();
+}
+
+var input = document.getElementById("titlesearch");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   searchtitle();
+  }
+});
+
+
+function searchtitle(){
+    var searchvalue=document.getElementById("titlesearch").value;
+    console.log(searchvalue)
+    db.collection('notes').doc({ title: searchvalue }).get().then(document => {
+        console.log(document)
+      })
+}
+
+
+
+var span = document.getElementsByClassName("close")[0];
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
 
